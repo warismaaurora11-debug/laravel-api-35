@@ -22,6 +22,14 @@ class ProductRequest extends FormRequest
      */
     public function rules(): array
     {
+        if ($this->isMethod('patch')) {
+            return [
+                'name' => 'sometimes|string|max:100',
+                'price' => 'sometimes|numeric',
+                'description' => 'sometimes|string',
+                'stock' => 'sometimes|integer',
+            ];
+        }
         return [
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
