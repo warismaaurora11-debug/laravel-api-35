@@ -14,5 +14,10 @@ class Product extends Model
         'price',
         'description',
         'stock',
+        'id_kategori',
     ];
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id');
+    }
 }
